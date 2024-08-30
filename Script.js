@@ -3,8 +3,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const nav = document.querySelector('.nav-links');
     const navLinks = document.querySelectorAll('.nav-links li');
 
+    // Toggle Navigation on Burger click
     burger.addEventListener('click', () => {
-        // Toggle Nav
         nav.classList.toggle('nav-active');
 
         // Animate Links
@@ -16,12 +16,12 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
-        // Burger Animation
+        // Burger Animation (change to "X" shape)
         burger.classList.toggle('toggle');
     });
 });
 
-// Add smooth scrolling to all links
+// Smooth Scroll for internal links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         e.preventDefault();
@@ -32,17 +32,34 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// Add animation to service cards on scroll
+// Intersection Observer for Service Cards Animation on Scroll
 const serviceCards = document.querySelectorAll('.service-card');
 
-const serviceCardObserver = new IntersectionObserver((entries) => {
+const serviceCardObserver = new IntersectionObserver((entries, observer) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
             entry.target.classList.add('animate');
+            observer.unobserve(entry.target); // Stop observing once the animation is applied
         }
     });
 }, { threshold: 0.5 });
 
 serviceCards.forEach(card => {
     serviceCardObserver.observe(card);
-})
+});
+
+// Add animations to hero text and services section when they appear in view
+const heroText = document.querySelector('.hero h1');
+const servicesSection = document.querySelector('.services');
+
+const fadeInObserver = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.style.animation = 'fadeIn 2s ease-out forwards';
+            observer.unobserve(entry.target); // Stop observing after the animation is applied
+        }
+    });
+}, { threshold: 0.5 });
+
+fadeInObserver.observe(heroText);
+fadeInObserver.observe(servicesSection);
