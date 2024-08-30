@@ -1,4 +1,3 @@
-/* styles.css */
 * {
     margin: 0;
     padding: 0;
@@ -17,7 +16,6 @@ body {
     padding: 0 20px;
 }
 
-/* Header styles */
 header {
     background-color: #333;
     color: #fff;
@@ -67,7 +65,6 @@ nav {
     transition: all 0.3s ease;
 }
 
-/* Hero section styles */
 .hero {
     position: relative;
     height: 100vh;
@@ -95,6 +92,7 @@ nav {
 .hero h1 {
     font-size: 3rem;
     margin-bottom: 1rem;
+    animation: fadeIn 2s ease-out forwards;
 }
 
 .cta-button {
@@ -111,10 +109,10 @@ nav {
     background-color: #e76f51;
 }
 
-/* Introduction section styles */
 .introduction {
     padding: 4rem 0;
     background-color: #f8f9fa;
+    animation: slideIn 2s ease-in;
 }
 
 .introduction .container {
@@ -130,12 +128,6 @@ nav {
     margin-right: 2rem;
 }
 
-.intro-text h2 {
-    font-size: 2rem;
-    margin-bottom: 1rem;
-}
-
-/* Services section styles */
 .services {
     padding: 4rem 0;
 }
@@ -143,6 +135,7 @@ nav {
 .services h2 {
     text-align: center;
     margin-bottom: 2rem;
+    animation: fadeIn 2s ease-out forwards;
 }
 
 .service-cards {
@@ -171,11 +164,6 @@ nav {
     margin-bottom: 1rem;
 }
 
-.service-card h3 {
-    margin-bottom: 1rem;
-}
-
-/* CTA section styles */
 .cta {
     background-color: #f4a261;
     color: #fff;
@@ -183,30 +171,16 @@ nav {
     text-align: center;
 }
 
-.cta h2 {
-    margin-bottom: 1rem;
-}
-
-.cta .cta-button {
-    background-color: #fff;
-    color: #f4a261;
-}
-
 .cta .cta-button:hover {
     background-color: #e76f51;
     color: #fff;
 }
 
-/* Footer styles */
 footer {
     background-color: #333;
     color: #fff;
     padding: 2rem 0;
     text-align: center;
-}
-
-.social-links {
-    margin-top: 1rem;
 }
 
 .social-links a {
@@ -220,11 +194,10 @@ footer {
     color: #f4a261;
 }
 
-/* Responsive styles */
 @media screen and (max-width: 768px) {
     .nav-links {
         position: absolute;
-        right: 0px;
+        right: 0;
         height: 92vh;
         top: 8vh;
         background-color: #333;
@@ -236,16 +209,12 @@ footer {
         transition: transform 0.5s ease-in;
     }
 
-    .nav-links li {
-        opacity: 0;
-    }
-
     .burger {
         display: block;
     }
 
     .nav-active {
-        transform: translateX(0%);
+        transform: translateX(0);
     }
 
     .service-card {
@@ -253,13 +222,12 @@ footer {
     }
 }
 
-@keyframes navLinkFade {
-    from {
-        opacity: 0;
-        transform: translateX(50px);
-    }
-    to {
-        opacity: 1;
-        transform: translateX(0px);
-    }
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideIn {
+    from { transform: translateX(-100%); }
+    to { transform: translateX(0); }
 }
